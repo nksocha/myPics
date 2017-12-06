@@ -1,0 +1,21 @@
+{
+  "name": "mypics",
+  "version": "1.0.0",
+  "description": "individual project to hold pictures",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicole Socha",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "express": "^4.15.5",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-nodemon": "^0.5.4",
+    "grunt-nodemon": "^0.4.2",
+    "nodemon": "^1.12.2"
+  },
+  "devDependencies": {}
+}
