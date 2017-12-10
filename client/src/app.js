@@ -18,6 +18,7 @@ export class App {
         name: 'List', 
         auth: true 
      }
+     
     ]);
   }
 }

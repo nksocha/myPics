@@ -10,4 +10,4 @@ var MyPicSchema = new Schema({
     
 });
 
-module.exports = Mongoose.model('mypics', MyPicSchema);
+module.exports = Mongoose.model('Mypic', MyPicSchema);

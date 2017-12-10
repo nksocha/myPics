@@ -1,14 +1,14 @@
 import {inject} from 'aurelia-framework';
 //import {Router} from 'aurelia-router';
 import {AuthService} from 'aurelia-auth';
-import {mypics} from '../resources/data/mypics';
+import {Mypics} from '../resources/data/mypics';
 
 
-@inject(mypics, AuthService)
+@inject(Mypics, AuthService)
 export class List {
   constructor(mypics, auth) {
 	this.mypics = mypics;
-         this.message = 'List';
+         this.message = 'My Pics List';
          this.auth = auth;
          this.loginError = '';
          this.user = JSON.parse(sessionStorage.getItem('user'));
@@ -18,27 +18,25 @@ export class List {
       
   }
   async activate(){
-		await this.mypics.getUsermypics(this.user._id);
+		await this.mypics.getUserMypics(this.user._id);
 	}
 
-  createmypic(){	
+  createMypic(){	
 		this.mypicObj = {
 			mypic: "",
 			description: "",
-			dateDue: new Date(),
-			userid: this.user._id,
-			priority: this.priorities[0]
+			userId: this.user._id,			
 		}
 		this.showList = false;		
   	}
 
-    editmypic(mypic){
+    editMypic(mypic){
 		this.mypicObj = mypic;
 		this. showList = false;
 	}
 	
   
-  async savemypic(){
+  async saveMypic(){
 		if(this.mypicObj){		
 			let response = await this.mypics.save(this.mypicObj);
 			if(response.error){
@@ -54,8 +52,8 @@ export class List {
 		}
 	}
 
-    deletemypic(mypic){
-		this.mypics.deletemypic(mypic._id);
+    deleteMypic(mypic){
+		this.mypics.deleteMypic(mypic._id);
 	}
 		
 	changeFiles(){

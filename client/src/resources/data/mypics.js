@@ -3,15 +3,15 @@ import {DataServices} from './data-services';
 
 
 @inject(DataServices)
-export class mypics {
+export class Mypics {
 
     constructor(data) {
         this.data = data;
-        this.mypicS_SERVICE = 'mypics';
+        this.MYPICS_SERVICE = 'mypics';
        this.mypicsArray = [];
 }
-async getUsermypics(id){
-    let response = await this.data.get(this.mypicS_SERVICE + "/user/" + id);
+async getUserMypics(id){
+    let response = await this.data.get(this.MYPICS_SERVICE + "/user/" + id);
     if(!response.error && !response.message){
         this.mypicsArray = response;
     }
@@ -21,13 +21,13 @@ async getUsermypics(id){
 async save(mypic){
         if(mypic){
             if(!mypic._id){
-                let response = await this.data.post(mypic, this.mypicS_SERVICE);
+                let response = await this.data.post(mypic, this.MYPICS_SERVICE);
                 if(!response.error){
                     this.mypicsArray.push(response);
                 }
                 return response;
             } else {
-                let response = await this.data.put(mypic, this.mypicS_SERVICE + "/" + mypic._id);
+                let response = await this.data.put(mypic, this.MYPICS_SERVICE + "/" + mypic._id);
                 if(!response.error){
                     // this.updateArray(response);
                 }
@@ -41,13 +41,13 @@ async uploadFile(files, userId, mypicId){
                 formData.append("file" + index, item);
             });
         
-        let response = await this.data.uploadFiles(formData, this.mypicS_SERVICE + "/upload/" + userId + "/" + mypicId);
+        let response = await this.data.uploadFiles(formData, this.MYPICS_SERVICE + "/upload/" + userId + "/" + mypicId);
         return response;
     }
     
 
-    async deletemypic(id){
-		let response = await this.data.delete(this.mypicS_SERVICE + "/" + id);
+    async deleteMypic(id){
+		let response = await this.data.delete(this.MYPICS_SERVICE + "/" + id);
 		if(!response.error){
 			for(let i = 0; i < this.mypicsArray.length; i++){
 				if(this.mypicsArray[i]._id === id){

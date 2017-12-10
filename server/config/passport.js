@@ -9,9 +9,9 @@ localStrategy = require('passport-local');
 var localOptions = { usernameField: 'email' };
 
 var localLogin = new localStrategy(localOptions, function(email, password, next){
-	User.findOne({email: email}).exec()
+  User.findOne({email: email}).exec()
 	.then(function(user){ 
-	     if(!user){
+    if(!user){
 	        return next({status: "404", message: "Email not found."});
 	      } else {
 	        user.comparePassword(password, function (err, isMatch) {

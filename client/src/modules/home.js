@@ -9,7 +9,7 @@ export class Home {
   constructor(router, users, auth) {
     this.router = router;
     this.users = users;
-    this.message = 'Home';
+    this.message = 'My Pics Home';
     this.showLogin = true;
     this.auth = auth;
     this.loginError = '';
