@@ -17,8 +17,15 @@ export class App {
         moduleId: './modules/list',
         name: 'List', 
         auth: true 
-     }
+     },
      
+     {
+      route: 'galleries',
+      moduleId: './modules/galleries',
+      name: 'Galleries', 
+      auth: true 
+   }
+
     ]);
   }
 }

@@ -1,0 +1,5 @@
+<template>
+    <h2>${user.firstName}'s Mypics </h2>
+    <compose show.bind="showGalleries" view="./components/galleriesList.html"></compose>
+    <compose show.bind="!showGalleries" view="./components/galleriesForm.html"></compose>
+</template>

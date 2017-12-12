@@ -3,7 +3,6 @@ import {Router} from 'aurelia-router';
 import { Users } from '../resources/data/users';
 import {AuthService} from 'aurelia-auth';
 
-
 @inject(Router, Users, AuthService)
 export class Home {
   constructor(router, users, auth) {
@@ -24,16 +23,16 @@ export class Home {
         password: ""
         }
     this.registerError = "";       
-	this.showLogin = false;
+  this.showLogin = false;
 }
 
     async save() {
-          let serverResponse = await this.users.save(this.user);
-          if (!serverResponse.error) {
-            this.showLogin = true;
-          } else {
-            this.registerError = "There was a problem registering the user."
-          }
+          let serverResponse = await this.users.save(this.user);
+          if (!serverResponse.error) {
+            this.showLogin = true;
+          } else {
+            this.registerError = "There was a problem registering the user."
+          }
     }
     
     login() {
@@ -41,7 +40,7 @@ export class Home {
         .then(response => {
           sessionStorage.setItem("user", JSON.stringify(response.user));
           this.loginError = "";
-          this.router.navigate('list');
+          this.router.navigate('galleries');
         })
         .catch(error => {
           console.log(error);
