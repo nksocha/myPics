@@ -27,7 +27,7 @@ router.get('/mypics/gallery/:galleriesId', function (req, res, next) {
         });
 });
 
-router.route('/mypics').get(requireAuth, function (req, res, next) {
+router.route('/mypics').get(function (req, res, next) {
     logger.log('Get all mypics', 'verbose');
 
     var query = Mypic.find()
