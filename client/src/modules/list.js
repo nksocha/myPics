@@ -58,8 +58,8 @@ export class MypicGalleries {
       this.mypic.deleteMypic(mypic._id);
   }
 
-  editMypic2(mypic) {
-    this.mypicObj2 = mypic;
+  editMypic(mypic) {
+    this.mypicsObj = mypic;
     this.showMypics = false;
   }
 

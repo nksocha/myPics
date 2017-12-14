@@ -88,7 +88,7 @@ router.route('/mypics/mypic').put(requireAuth, function (req, res, next) {
 });
 
 
-router.route('/mypics/mypic').delete(requireAuth, function (req, res, next) {
+router.route('/mypics/:mypic').delete(requireAuth, function (req, res, next) {
     logger.log('Delete mypic', 'verbose');
 
     Mypic.remove({ _id: req.params.mypic })
