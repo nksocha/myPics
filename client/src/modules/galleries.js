@@ -28,8 +28,6 @@ export class GalleriesList {
     };
     this.showGalleries = false;
   }
-
-  
  
   async saveGalleries() {
     if (this.galleriesObj) {

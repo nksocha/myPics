@@ -22,9 +22,9 @@ export class MypicGalleries {
         alert('There was an error uploading the Photo');
       } else {
         var mypicId = response._id;
-        var galleriesId = response.galleriesId;
+        // var galleriesId = response.galleriesId;
         if (this.filesToUpload && this.filesToUpload.length) {
-          await this.mypic.uploadFile(this.filesToUpload, galleriesId,  mypicId);
+          await this.mypic.uploadFile(this.filesToUpload, this.galleries._id,  mypicId);
           this.filesToUpload = [];
         }
       }
@@ -38,7 +38,7 @@ export class MypicGalleries {
       mypic: '',
       description: '',
       userId: this.user._id,
-      galleriesId: this.galleries._id
+      galleryId: this.galleries._id
     };
     this.showMypics = false;
   }

@@ -32,12 +32,12 @@ export class Mypics {
         files.forEach((item, index) => {
             formData.append("file" + index, item);
         });
-        let response = await this.data.uploadFiles(formData, this.GALLERIES_SERVICE + "/upload/" + galleriesId + "/" + mypicId);
+        let response = await this.data.uploadFiles(formData, this.MYPIC_SERVICE + "/upload/" + galleriesId + "/" + mypicId);
         return response;
     }
 
     async getUserMypic(galleriesId) {
-        let response = await this.data.get("users/" + this.GALLERIES_SERVICE + "/" + galleriesId);
+        let response = await this.data.get(this.MYPIC_SERVICE + "/gallery/" + galleriesId);
         if (!response.error && !response.message) {
             this.mypicsArray = response;
         }

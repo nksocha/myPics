@@ -6,7 +6,8 @@ var MyPicSchema = new Schema({
     mypic: { type: String, required: true },
     description: { type: String },
     dateCreated: {type: Date, default: Date.now},
-    file: {filename: String, originalName: String, dateUploaded: Date}
+    file: {filename: String, originalName: String, dateUploaded: Date},
+    galleryId: { type: Schema.Types.ObjectId, required: true }
     
 });
 

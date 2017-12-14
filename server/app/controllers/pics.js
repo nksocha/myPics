@@ -15,9 +15,9 @@ var requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = function (app, config) {
     app.use('/api', router);
 
-router.get('/mypics/user/:userId', function (req, res, next) {
+router.get('/mypics/gallery/:galleriesId', function (req, res, next) {
     logger.log('Get all mypics for ' + req.params.userId, 'verbose');
-    Mypic.find({ user: req.params.userId })
+    Mypic.find({ galleryId: req.params.galleriesId })
         .then(Mypics => {
             if (Mypics) {
                 res.status(200).json(Mypics);
@@ -127,7 +127,7 @@ router.post('/mypics/upload/:userId/:mypicId', upload.any(), function (req, res,
         } else {
             if (req.files) {
                 mypic.file = {
-                    fileName: req.files[0].filename,
+                    filename: req.files[0].filename,
                     originalName: req.files[0].originalname,
                     dateUploaded: new Date()
                 };
