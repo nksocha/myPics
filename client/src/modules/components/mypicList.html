@@ -23,7 +23,7 @@
         </thead>
     <tbody>
            <tr repeat.for = "mypic of mypic.mypicsArray">
-                <td><a href="http://localhost:5000/uploads/${galleries._id}/${mypic.file.filename}" target="_blank"><img src ="http://localhost:5000/uploads/${user._id}/${mypic.file.fileName}" alt=${mypic.file.originalName} class="img-thumbnail" style ="width: 150px"></a></th>
+                <td><a href="uploads/${galleries._id}/${mypic.file.filename}" target="_blank"><img src ="http://localhost:5000/uploads/${user._id}/${mypic.file.fileName}" alt=${mypic.file.originalName} class="img-thumbnail" style ="width: 150px"></a></th>
                     <td>${mypic.mypic} </td>
                     <td>${mypic.description}</td>
                 </td>
