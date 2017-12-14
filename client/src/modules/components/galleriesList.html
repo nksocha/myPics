@@ -17,17 +17,16 @@
                     <th>Galleries Name</th>
                     <th>Date Created</th>
                     <th>Description</th>						
-                    <th>Edit/Add/Delete</th>						
+                    <th>Edit | Delete</th>						
                 </tr>
             </thead>
                 <tbody>
                     <tr repeat.for = "galleries of galleries.galleriesArray">
-                    <th><button click.trigger="showGalleries(galleries)" class="btn btn-primary">${galleries.galleries}</button></th>
+                    <th><button click.trigger="showGalleriesOrAdd(galleries)" class="btn btn-primary">${galleries.galleries}</button></th>
                     <td>${galleries.dateCreated | dateFormat}</td> 
                     <td>${galleries.description}</td>
                 <td>
                     <i click.trigger="editGalleries(galleries)" class="fa fa-pencil rightMargin" aria-hidden="true"></i>
-                    <i click.trigger="mypicList(galleries)" class="fa fa-camera" aria-hidden="true"></i>
                     <i click.trigger="deleteGalleries(galleries)"class="fa fa-trash rightMargin" aria-hidden="true"></i>              
                 </td>												
                 </tr>

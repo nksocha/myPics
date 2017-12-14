@@ -29,14 +29,7 @@ export class GalleriesList {
     this.showGalleries = false;
   }
 
-  createMypics() {
-    this.mypicsObj = {
-      mypics: '',
-      description: '',
-      userId: this.user._id,
-    };
-    this.showmypics = false;
-  }
+  
  
   async saveGalleries() {
     if (this.galleriesObj) {
@@ -54,6 +47,7 @@ export class GalleriesList {
   editGalleries(galleries) {
     this.galleriesObj = galleries;
     this.showGalleries = false;
+    
   }
   deleteGalleries(galleries) {
     this.galleries.deleteGalleries(galleries._id);

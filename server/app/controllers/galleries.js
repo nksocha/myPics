@@ -7,12 +7,12 @@ var express = require('express'),
 module.exports = function (app, config) {
     app.use('/api', router);
 
-    router.get('/galleries/:userId', function (req, res, next) {
+    router.get('/galleries/user/:userId', function (req, res, next) {
         logger.log('Get Galleries' + req.params.userId, 'verbose');
         Galleries.find({ userId: req.params.userId })
             .then(galleries => {
                 if (galleries) {
-                    res.status(200).json(mypics);
+                    res.status(200).json(galleries);
                 } else {
                     res.status(404).json({ message: "No Galleries" });
                 }

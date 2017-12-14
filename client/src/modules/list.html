@@ -1,5 +1,5 @@
 <template>
-    <h2>Mypics List!</h2>
-    <compose show.bind="showList" view="./components/mypiclist.html"></compose>
-    <compose show.bind="!showList" view="./components/mypicForm.html"></compose>
+    <h2>${user.firstName}'s Mypics</h2>
+    <compose show.bind="showMypics" view="./components/mypicList.html"></compose>
+    <compose show.bind="!showMypics" view="./components/mypicForm.html"></compose>
 </template>

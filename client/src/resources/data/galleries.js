@@ -13,7 +13,7 @@ export class Galleries {
 async getUserGalleries(id){
     let response = await this.data.get(this.GALLERIES_SERVICE + "/user/" + id);
     if(!response.error && !response.message){
-        this.GalleriesArray = response;
+        this.galleriesArray = response;
     }
 }
 

@@ -1,59 +1,66 @@
-import {inject} from 'aurelia-framework';
-import {DataServices} from './data-services';
-
-
+import { inject } from 'aurelia-framework';
+import { DataServices } from './data-services';
 @inject(DataServices)
 export class Mypics {
-
     constructor(data) {
-        this.data = data;
-        this.MYPICS_SERVICE = 'mypics';
-       this.mypicsArray = [];
-}
-async getUserMypics(id){
-    let response = await this.data.get(this.MYPICS_SERVICE + "/user/" + id);
-    if(!response.error && !response.message){
-        this.mypicsArray = response;
+        this.data = data;
+        this.MYPIC_SERVICE = 'mypics';
+        this.GALLERIES_SERVICE = 'galleries';
+        this.mypicsArray = [];
     }
-}
 
+    async save(mypic) {
+        if (mypic) {
+            if (!mypic._id) {
+                let response = await this.data.post(mypic, this.MYPIC_SERVICE);
+                if (!response.error) {
+                    this.mypicsArray.push(response);
+                }
+                return response;
+            } else {
+                let response = await this.data.put(mypic, this.GALLERIES_SERVICE + "/" + this.MYPIC_SERVICE + "/" + mypic._id);
+                if (!response.error) {
+                    // this.updateArray(response);
+                }
+                return response;
+            }
+        }
+    }
 
-async save(mypic){
-        if(mypic){
-            if(!mypic._id){
-                let response = await this.data.post(mypic, this.MYPICS_SERVICE);
-                if(!response.error){
-                    this.mypicsArray.push(response);
-                }
-                return response;
-            } else {
-                let response = await this.data.put(mypic, this.MYPICS_SERVICE + "/" + mypic._id);
-                if(!response.error){
-                    // this.updateArray(response);
-                }
-                return response;
-            }
-        }
-}
-async uploadFile(files, userId, mypicId){
-            let formData = new FormData();
-            files.forEach((item, index) => {
-                formData.append("file" + index, item);
-            });
-        
-        let response = await this.data.uploadFiles(formData, this.MYPICS_SERVICE + "/upload/" + userId + "/" + mypicId);
+    async uploadFile(files, galleriesId, mypicId) {
+        let formData = new FormData();
+        files.forEach((item, index) => {
+            formData.append("file" + index, item);
+        });
+        let response = await this.data.uploadFiles(formData, this.GALLERIES_SERVICE + "/upload/" + galleriesId + "/" + mypicId);
         return response;
     }
-    
 
-    async deleteMypic(id){
-		let response = await this.data.delete(this.MYPICS_SERVICE + "/" + id);
-		if(!response.error){
-			for(let i = 0; i < this.mypicsArray.length; i++){
-				if(this.mypicsArray[i]._id === id){
-					this.mypicsArray.splice(i,1);
-				}
-			}
-		}
-	}
+    async getUserMypic(galleriesId) {
+        let response = await this.data.get("users/" + this.GALLERIES_SERVICE + "/" + galleriesId);
+        if (!response.error && !response.message) {
+            this.mypicsArray = response;
+        }
+    }
+
+    async deleteMypic(id) {
+        let response = await this.data.delete("mypic" + "/" + id);
+        if (!response.error) {
+            for (let i = 0; i < this.mypicsArray.length; i++) {
+                if (this.mypicsArray[i]._id === id) {
+                    this.mypicsArray.splice(i, 1);
+                }
+            }
+        }
+    }
+
+    async saveEdited(mypic) {
+        if (mypic) {
+            let response = await this.data.put(mypic, this.GALLERIES_SERVICE + "/" + this.MYPIC_SERVICE + "/" + mypic._id);
+            if (!response.error) {
+                // this.updateArray(response);
+            }
+            return response;
+        }
+    }
 }
